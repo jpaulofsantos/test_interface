@@ -25,12 +25,12 @@ public class ContractService {
         for (int i=1; i<=months; i++) {
 
             LocalDateTime newDateTime = contract.getDate().plusMonths(i);
-            DateTimeFormatter fmt =  DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
-
             double fee = onlinePaymentService.paymentFee((contract.getTotalValue()/months));
+
             if (i>1) {
                 fee += i;
             }
+
             double valueMonths = onlinePaymentService.interest(fee, i);
             contract.setInstallment(new Installment(newDateTime, valueMonths));
             installmentList.add(contract.getInstallment());

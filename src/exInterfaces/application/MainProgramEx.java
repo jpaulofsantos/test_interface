@@ -30,6 +30,5 @@ public class MainProgramEx {
         ContractService contractService = new ContractService(parcelas, new PayPalService());
 
         contractService.processContract(contract, parcelas);
-
     }
 }
