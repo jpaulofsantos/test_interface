@@ -19,7 +19,7 @@ public class ContractService {
         this.onlinePaymentService = onlinePaymentService;
     }
 
-    public void processContract(Contract contract, int months) {
+    public List<Installment>  processContract(Contract contract, int months) {
         List<Installment> installmentList = new ArrayList<>();
 
         for (int i=1; i<=months; i++) {
@@ -36,6 +36,7 @@ public class ContractService {
             installmentList.add(contract.getInstallment());
         }
 
+        /*
         System.out.println("PARCELAS:");
         for (int i=0; i<installmentList.size(); i++) {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
@@ -43,5 +44,7 @@ public class ContractService {
 
             System.out.println(formattedDate + " - " + installmentList.get(i).getAmount());
         }
+        */
+        return installmentList;
     }
 }

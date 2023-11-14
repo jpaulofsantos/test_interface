@@ -1,6 +1,7 @@
 package exInterfaces.application;
 
 import exInterfaces.model.entities.Contract;
+import exInterfaces.model.entities.Installment;
 import exInterfaces.model.services.ContractService;
 import exInterfaces.model.services.PayPalService;
 
@@ -29,6 +30,9 @@ public class MainProgramEx {
 
         ContractService contractService = new ContractService(parcelas, new PayPalService());
 
-        contractService.processContract(contract, parcelas);
+        System.out.println("PARCELAS:");
+        for (Installment installment : contractService.processContract(contract, parcelas)){
+            System.out.println(installment.getDueDate() + " - " + installment.getAmount());
+        }
     }
 }
